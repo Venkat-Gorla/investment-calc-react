@@ -2,16 +2,6 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 
-// function App() {
-//   return (
-//     <>
-//       <Header />
-//     </>
-//   );
-// }
-
-// export default App;
-
 const App: React.FC = () => {
   const [inputs, setInputs] = useState({
     initialInvestment: 1000,
