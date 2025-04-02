@@ -16,7 +16,7 @@ body {
 
 #header {
   text-align: center;
-  margin: 3rem auto;
+  margin: 1rem auto 2rem;
 }
 
 #header img {
@@ -24,10 +24,13 @@ body {
   height: 5rem;
   object-fit: contain;
   background-color: transparent;
+  display: block; /* Ensures no extra space from inline elements */
+  margin: 0 auto; /* Center the image */
 }
 
 #header h1 {
   font-size: 1.5rem;
+  margin-top: 0.5rem; /* Reduce spacing below image */
 }
 
 #user-input {
