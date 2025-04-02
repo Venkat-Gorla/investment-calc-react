@@ -1,6 +1,6 @@
 import React from "react";
 
-export type UserInputProps = {
+type UserInputProps = {
   values: {
     initialInvestment: number;
     annualInvestment: number;
@@ -12,9 +12,9 @@ export type UserInputProps = {
 
 const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
   return (
-    <div id="user-input">
+    <section id="user-input">
       <div className="input-group">
-        <div>
+        <p>
           <label htmlFor="initialInvestment">Initial Investment</label>
           <input
             type="number"
@@ -22,8 +22,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
             value={values.initialInvestment}
             onChange={(e) => onChange("initialInvestment", +e.target.value)}
           />
-        </div>
-        <div>
+        </p>
+        <p>
           <label htmlFor="annualInvestment">Annual Investment</label>
           <input
             type="number"
@@ -31,10 +31,10 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
             value={values.annualInvestment}
             onChange={(e) => onChange("annualInvestment", +e.target.value)}
           />
-        </div>
+        </p>
       </div>
       <div className="input-group">
-        <div>
+        <p>
           <label htmlFor="expectedReturn">Expected Return (%)</label>
           <input
             type="number"
@@ -42,8 +42,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
             value={values.expectedReturn}
             onChange={(e) => onChange("expectedReturn", +e.target.value)}
           />
-        </div>
-        <div>
+        </p>
+        <p>
           <label htmlFor="duration">Duration (years)</label>
           <input
             type="number"
@@ -51,9 +51,9 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
             value={values.duration}
             onChange={(e) => onChange("duration", +e.target.value)}
           />
-        </div>
+        </p>
       </div>
-    </div>
+    </section>
   );
 };
 
