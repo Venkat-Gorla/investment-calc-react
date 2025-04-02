@@ -1,6 +1,6 @@
 import React from "react";
 
-type UserInputProps = {
+export type UserInputProps = {
   values: {
     initialInvestment: number;
     annualInvestment: number;
