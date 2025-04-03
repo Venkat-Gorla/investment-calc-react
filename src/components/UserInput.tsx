@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 type UserInputProps = {
   values: {
@@ -8,15 +8,9 @@ type UserInputProps = {
     duration: number;
   };
   onChange: (field: string, value: number) => void;
-  onValid: (isValid: boolean) => void; // Notify when all fields are valid
 };
 
-const UserInput: React.FC<UserInputProps> = ({ values, onChange, onValid }) => {
-  useEffect(() => {
-    // Notify parent when all fields are valid (i.e., greater than 0)
-    onValid(Object.values(values).every((val) => val > 0));
-  }, [values, onValid]);
-
+const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
   return (
     <section id="user-input">
       <div className="input-group">

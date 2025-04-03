@@ -10,7 +10,7 @@ const App: React.FC = () => {
     duration: 10,
   });
 
-  const [isValid, setIsValid] = useState(false); // Track form validity
+  const isValid = Object.values(inputs).every((val) => val > 0);
 
   const handleInputChange = (field: string, value: number) => {
     setInputs((prev) => ({ ...prev, [field]: value }));
@@ -19,14 +19,17 @@ const App: React.FC = () => {
   return (
     <>
       <Header />
-      <UserInput
-        values={inputs}
-        onChange={handleInputChange}
-        onValid={setIsValid}
-      />
+      <UserInput values={inputs} onChange={handleInputChange} />
 
       {/* Placeholder UI for validation status */}
-      <p style={{ color: isValid ? "green" : "red" }}>
+      {/* pending: fix inline style and make separate component */}
+      <p
+        style={{
+          color: isValid ? "green" : "red",
+          textAlign: "center",
+          display: "block",
+        }}
+      >
         {isValid
           ? "✅ All inputs are valid!"
           : "❌ Please fill all fields correctly."}
