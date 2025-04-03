@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 type UserInputProps = {
   values: {
@@ -8,9 +8,15 @@ type UserInputProps = {
     duration: number;
   };
   onChange: (field: string, value: number) => void;
+  onValid: (isValid: boolean) => void; // Notify when all fields are valid
 };
 
-const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
+const UserInput: React.FC<UserInputProps> = ({ values, onChange, onValid }) => {
+  useEffect(() => {
+    // Notify parent when all fields are valid (i.e., greater than 0)
+    onValid(Object.values(values).every((val) => val > 0));
+  }, [values, onValid]);
+
   return (
     <section id="user-input">
       <div className="input-group">
@@ -19,7 +25,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
           <input
             type="number"
             id="initialInvestment"
-            value={values.initialInvestment}
+            placeholder="Required"
+            value={values.initialInvestment || ""}
             onChange={(e) => onChange("initialInvestment", +e.target.value)}
           />
         </p>
@@ -28,7 +35,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
           <input
             type="number"
             id="annualInvestment"
-            value={values.annualInvestment}
+            placeholder="Required"
+            value={values.annualInvestment || ""}
             onChange={(e) => onChange("annualInvestment", +e.target.value)}
           />
         </p>
@@ -39,7 +47,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
           <input
             type="number"
             id="expectedReturn"
-            value={values.expectedReturn}
+            placeholder="Required"
+            value={values.expectedReturn || ""}
             onChange={(e) => onChange("expectedReturn", +e.target.value)}
           />
         </p>
@@ -48,7 +57,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
           <input
             type="number"
             id="duration"
-            value={values.duration}
+            placeholder="Required"
+            value={values.duration || ""}
             onChange={(e) => onChange("duration", +e.target.value)}
           />
         </p>
