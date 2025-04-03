@@ -1,0 +1,95 @@
+import {
+  calculateInvestmentResults,
+  InvestmentParams,
+  InvestmentYearData,
+} from "../util/investment";
+
+describe("calculateInvestmentResults", () => {
+  it("should return the correct investment results for a given input", () => {
+    const input: InvestmentParams = {
+      initialInvestment: 1000,
+      annualInvestment: 500,
+      expectedReturn: 5,
+      duration: 3,
+    };
+
+    const expectedOutput: InvestmentYearData[] = [
+      { year: 1, interest: 50, valueEndOfYear: 1550, annualInvestment: 500 },
+      {
+        year: 2,
+        interest: 77.5,
+        valueEndOfYear: 2127.5,
+        annualInvestment: 500,
+      },
+      {
+        year: 3,
+        interest: 106.375,
+        valueEndOfYear: 2733.875,
+        annualInvestment: 500,
+      },
+    ];
+
+    expect(calculateInvestmentResults(input)).toEqual(expectedOutput);
+  });
+
+  it("should return an empty array when duration is 0", () => {
+    const input: InvestmentParams = {
+      initialInvestment: 1000,
+      annualInvestment: 500,
+      expectedReturn: 5,
+      duration: 0,
+    };
+
+    expect(calculateInvestmentResults(input)).toEqual([]);
+  });
+
+  it("should handle zero investment values correctly", () => {
+    const input: InvestmentParams = {
+      initialInvestment: 0,
+      annualInvestment: 0,
+      expectedReturn: 5,
+      duration: 3,
+    };
+
+    const expectedOutput: InvestmentYearData[] = [
+      { year: 1, interest: 0, valueEndOfYear: 0, annualInvestment: 0 },
+      { year: 2, interest: 0, valueEndOfYear: 0, annualInvestment: 0 },
+      { year: 3, interest: 0, valueEndOfYear: 0, annualInvestment: 0 },
+    ];
+
+    expect(calculateInvestmentResults(input)).toEqual(expectedOutput);
+  });
+
+  it("should handle 100% return rate correctly", () => {
+    const input: InvestmentParams = {
+      initialInvestment: 1000,
+      annualInvestment: 500,
+      expectedReturn: 100,
+      duration: 2,
+    };
+
+    const expectedOutput: InvestmentYearData[] = [
+      { year: 1, interest: 1000, valueEndOfYear: 2500, annualInvestment: 500 },
+      { year: 2, interest: 2500, valueEndOfYear: 5500, annualInvestment: 500 },
+    ];
+
+    expect(calculateInvestmentResults(input)).toEqual(expectedOutput);
+  });
+
+  it("should handle a 0% return rate correctly", () => {
+    const input: InvestmentParams = {
+      initialInvestment: 1000,
+      annualInvestment: 500,
+      expectedReturn: 0,
+      duration: 3,
+    };
+
+    const expectedOutput: InvestmentYearData[] = [
+      { year: 1, interest: 0, valueEndOfYear: 1500, annualInvestment: 500 },
+      { year: 2, interest: 0, valueEndOfYear: 2000, annualInvestment: 500 },
+      { year: 3, interest: 0, valueEndOfYear: 2500, annualInvestment: 500 },
+    ];
+
+    expect(calculateInvestmentResults(input)).toEqual(expectedOutput);
+  });
+});
