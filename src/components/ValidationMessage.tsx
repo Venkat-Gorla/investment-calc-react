@@ -1,5 +1,9 @@
 import React from "react";
 
+// pending:
+// message string can also come as a prop, since only calling code is aware
+// of what message to show
+
 type ValidationMessageProps = {
   isValid: boolean;
 };
