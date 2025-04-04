@@ -1,10 +1,6 @@
 import React from "react";
 import { InvestmentYearData } from "../util/investment";
 
-// pending:
-// - can use Tailwind to create same look and feel for this component
-// - can have unit test for this component
-
 type ResultsProps = {
   results: InvestmentYearData[];
   initialInvestment: number;

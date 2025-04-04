@@ -1,8 +1,9 @@
 import React from "react";
 
 // pending:
-// message string can also come as a prop, since only calling code is aware
-// of what message to show
+// - message string can also come as a prop, since only calling code is aware
+//   of what message to show
+// - can use Tailwind to create same look and feel for this component
 
 type ValidationMessageProps = {
   isValid: boolean;
