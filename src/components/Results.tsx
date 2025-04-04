@@ -1,17 +1,9 @@
 import React from "react";
+import { InvestmentYearData } from "../util/investment";
 
-// pending: 
-// - this type is not needed, should use the one from the utils folder
-// - understand and make improvements
+// pending:
 // - can use Tailwind to create same look and feel for this component
-// - success validation message is not needed
-// - increase table data font for better readability
-type InvestmentYearData = {
-  year: number;
-  interest: number;
-  valueEndOfYear: number;
-  annualInvestment: number;
-};
+// - can have unit test for this component
 
 type ResultsProps = {
   results: InvestmentYearData[];
