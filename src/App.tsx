@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import ValidationMessage from "./components/ValidationMessage";
+import Results from "./components/Results";
+import { calculateInvestmentResults } from "./util/investment";
 
 const App: React.FC = () => {
   const [inputs, setInputs] = useState({
@@ -22,6 +24,12 @@ const App: React.FC = () => {
       <Header />
       <UserInput values={inputs} onChange={handleInputChange} />
       <ValidationMessage isValid={isValid} />
+      {isValid && (
+        <Results
+          results={calculateInvestmentResults(inputs)}
+          initialInvestment={inputs.initialInvestment}
+        />
+      )}
     </>
   );
 };
