@@ -23,7 +23,11 @@ const App: React.FC = () => {
     <>
       <Header />
       <UserInput values={inputs} onChange={handleInputChange} />
-      <ValidationMessage isValid={isValid} />
+      <ValidationMessage
+        isValid={isValid}
+        message="❌ Please enter positive numbers for all the fields."
+      />
+
       {isValid && (
         <Results
           results={calculateInvestmentResults(inputs)}
