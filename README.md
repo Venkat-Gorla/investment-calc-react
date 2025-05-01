@@ -1,6 +1,6 @@
 # Investment Calculator - React App
 
-This is a **React + TypeScript** application built with Vite that calculates investment growth over time. This project is **based on a course** assignment but has been extended with additional features, improved design, and unit test coverage as part of independent work.
+This is a **React + TypeScript** application built with Vite that calculates investment growth over time. This project is **based on a Udemy course** assignment but has been extended with additional features, improved design, and unit test coverage as part of independent work.
 
 ## 🧱 Project Structure
 
