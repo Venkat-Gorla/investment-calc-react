@@ -3,7 +3,8 @@ import "@testing-library/jest-dom";
 import ValidationMessage from "../components/ValidationMessage";
 
 describe("ValidationMessage", () => {
-  const TEST_MESSAGE = "❌ Please enter positive numbers for all the fields.";
+  const TEST_MESSAGE =
+    "❌ Initial or Annual Investment must be > 0. All other fields must be positive.";
 
   it("renders nothing when isValid is true", () => {
     const { container } = render(

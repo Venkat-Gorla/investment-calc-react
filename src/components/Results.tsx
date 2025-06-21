@@ -3,12 +3,12 @@ import { InvestmentYearData } from "../util/investment";
 
 type ResultsProps = {
   results: InvestmentYearData[];
-  initialInvestment: string;
+  initialInvestment: number;
 };
 
 const Results: React.FC<ResultsProps> = ({ results, initialInvestment }) => {
   let totalInterest = 0;
-  let totalInvested = parseFloat(initialInvestment);
+  let totalInvested = initialInvestment;
 
   return (
     <table id="result">

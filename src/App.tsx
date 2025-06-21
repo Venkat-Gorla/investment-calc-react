@@ -35,7 +35,7 @@ const App: React.FC = () => {
       {isValid && (
         <Results
           results={calculateInvestmentResults(inputs)}
-          initialInvestment={inputs.initialInvestment}
+          initialInvestment={parseFloat(inputs.initialInvestment)}
         />
       )}
     </>
