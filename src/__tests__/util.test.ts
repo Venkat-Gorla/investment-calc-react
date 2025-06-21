@@ -2,6 +2,7 @@ import {
   calculateInvestmentResults,
   InvestmentParams,
   InvestmentYearData,
+  isValidInvestmentInput,
 } from "../util/investment";
 
 describe("calculateInvestmentResults", () => {
@@ -91,5 +92,77 @@ describe("calculateInvestmentResults", () => {
     ];
 
     expect(calculateInvestmentResults(input)).toEqual(expectedOutput);
+  });
+});
+
+describe("isValidInvestmentInput", () => {
+  it("should return true for valid input where both investments are positive", () => {
+    const input: InvestmentParams = {
+      initialInvestment: "1000",
+      annualInvestment: "500",
+      expectedReturn: "5",
+      duration: "10",
+    };
+    expect(isValidInvestmentInput(input)).toBe(true);
+  });
+
+  it("should return true if initial is > 0 and annual is 0", () => {
+    const input: InvestmentParams = {
+      initialInvestment: "1000",
+      annualInvestment: "0",
+      expectedReturn: "5",
+      duration: "10",
+    };
+    expect(isValidInvestmentInput(input)).toBe(true);
+  });
+
+  it("should return true if annual is > 0 and initial is 0", () => {
+    const input: InvestmentParams = {
+      initialInvestment: "0",
+      annualInvestment: "500",
+      expectedReturn: "5",
+      duration: "10",
+    };
+    expect(isValidInvestmentInput(input)).toBe(true);
+  });
+
+  it("should return false if both investments are 0", () => {
+    const input: InvestmentParams = {
+      initialInvestment: "0",
+      annualInvestment: "0",
+      expectedReturn: "5",
+      duration: "10",
+    };
+    expect(isValidInvestmentInput(input)).toBe(false);
+  });
+
+  it("should return false if expectedReturn is 0", () => {
+    const input: InvestmentParams = {
+      initialInvestment: "1000",
+      annualInvestment: "500",
+      expectedReturn: "0",
+      duration: "10",
+    };
+    expect(isValidInvestmentInput(input)).toBe(false);
+  });
+
+  it("should return false if duration is 0", () => {
+    const input: InvestmentParams = {
+      initialInvestment: "1000",
+      annualInvestment: "500",
+      expectedReturn: "5",
+      duration: "0",
+    };
+    expect(isValidInvestmentInput(input)).toBe(false);
+  });
+
+  it("should return false for non-numeric input", () => {
+    const input: InvestmentParams = {
+      initialInvestment: "abc",
+      annualInvestment: "500",
+      expectedReturn: "5",
+      duration: "10",
+    };
+    expect(isValidInvestmentInput(input)).toBe(false);
   });
 });
