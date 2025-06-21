@@ -2,12 +2,12 @@ import React from "react";
 
 type UserInputProps = {
   values: {
-    initialInvestment: number;
-    annualInvestment: number;
-    expectedReturn: number;
-    duration: number;
+    initialInvestment: string;
+    annualInvestment: string;
+    expectedReturn: string;
+    duration: string;
   };
-  onChange: (field: string, value: number) => void;
+  onChange: (field: string, value: string) => void;
 };
 
 const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
@@ -20,8 +20,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
             type="number"
             id="initialInvestment"
             placeholder="Required"
-            value={values.initialInvestment || ""}
-            onChange={(e) => onChange("initialInvestment", +e.target.value)}
+            value={values.initialInvestment}
+            onChange={(e) => onChange("initialInvestment", e.target.value)}
           />
         </p>
         <p>
@@ -30,8 +30,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
             type="number"
             id="annualInvestment"
             placeholder="Required"
-            value={values.annualInvestment || ""}
-            onChange={(e) => onChange("annualInvestment", +e.target.value)}
+            value={values.annualInvestment}
+            onChange={(e) => onChange("annualInvestment", e.target.value)}
           />
         </p>
       </div>
@@ -42,8 +42,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
             type="number"
             id="expectedReturn"
             placeholder="Required"
-            value={values.expectedReturn || ""}
-            onChange={(e) => onChange("expectedReturn", +e.target.value)}
+            value={values.expectedReturn}
+            onChange={(e) => onChange("expectedReturn", e.target.value)}
           />
         </p>
         <p>
@@ -52,8 +52,8 @@ const UserInput: React.FC<UserInputProps> = ({ values, onChange }) => {
             type="number"
             id="duration"
             placeholder="Required"
-            value={values.duration || ""}
-            onChange={(e) => onChange("duration", +e.target.value)}
+            value={values.duration}
+            onChange={(e) => onChange("duration", e.target.value)}
           />
         </p>
       </div>

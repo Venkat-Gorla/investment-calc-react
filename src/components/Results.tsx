@@ -3,22 +3,22 @@ import { InvestmentYearData } from "../util/investment";
 
 type ResultsProps = {
   results: InvestmentYearData[];
-  initialInvestment: number;
+  initialInvestment: string;
 };
 
 const Results: React.FC<ResultsProps> = ({ results, initialInvestment }) => {
   let totalInterest = 0;
-  let totalInvested = initialInvestment;
+  let totalInvested = parseFloat(initialInvestment);
 
   return (
     <table id="result">
       <thead>
         <tr>
           <th>Year</th>
-          <th>Investment Value</th>
+          <th>Invested Capital</th>
           <th>Interest (Year)</th>
           <th>Total Interest</th>
-          <th>Invested Capital</th>
+          <th>Investment Value</th>
         </tr>
       </thead>
       <tbody>
@@ -29,10 +29,10 @@ const Results: React.FC<ResultsProps> = ({ results, initialInvestment }) => {
           return (
             <tr key={yearData.year}>
               <td>{yearData.year}</td>
-              <td>${yearData.valueEndOfYear.toFixed(2)}</td>
+              <td>${totalInvested.toFixed(2)}</td>
               <td>${yearData.interest.toFixed(2)}</td>
               <td>${totalInterest.toFixed(2)}</td>
-              <td>${totalInvested.toFixed(2)}</td>
+              <td>${yearData.valueEndOfYear.toFixed(2)}</td>
             </tr>
           );
         })}
