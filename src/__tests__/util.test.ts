@@ -7,10 +7,10 @@ import {
 describe("calculateInvestmentResults", () => {
   it("should return the correct investment results for a given input", () => {
     const input: InvestmentParams = {
-      initialInvestment: 1000,
-      annualInvestment: 500,
-      expectedReturn: 5,
-      duration: 3,
+      initialInvestment: "1000",
+      annualInvestment: "500",
+      expectedReturn: "5",
+      duration: "3",
     };
 
     const expectedOutput: InvestmentYearData[] = [
@@ -34,10 +34,10 @@ describe("calculateInvestmentResults", () => {
 
   it("should return an empty array when duration is 0", () => {
     const input: InvestmentParams = {
-      initialInvestment: 1000,
-      annualInvestment: 500,
-      expectedReturn: 5,
-      duration: 0,
+      initialInvestment: "1000",
+      annualInvestment: "500",
+      expectedReturn: "5",
+      duration: "0",
     };
 
     expect(calculateInvestmentResults(input)).toEqual([]);
@@ -45,10 +45,10 @@ describe("calculateInvestmentResults", () => {
 
   it("should handle zero investment values correctly", () => {
     const input: InvestmentParams = {
-      initialInvestment: 0,
-      annualInvestment: 0,
-      expectedReturn: 5,
-      duration: 3,
+      initialInvestment: "0",
+      annualInvestment: "0",
+      expectedReturn: "5",
+      duration: "3",
     };
 
     const expectedOutput: InvestmentYearData[] = [
@@ -62,10 +62,10 @@ describe("calculateInvestmentResults", () => {
 
   it("should handle 100% return rate correctly", () => {
     const input: InvestmentParams = {
-      initialInvestment: 1000,
-      annualInvestment: 500,
-      expectedReturn: 100,
-      duration: 2,
+      initialInvestment: "1000",
+      annualInvestment: "500",
+      expectedReturn: "100",
+      duration: "2",
     };
 
     const expectedOutput: InvestmentYearData[] = [
@@ -78,10 +78,10 @@ describe("calculateInvestmentResults", () => {
 
   it("should handle a 0% return rate correctly", () => {
     const input: InvestmentParams = {
-      initialInvestment: 1000,
-      annualInvestment: 500,
-      expectedReturn: 0,
-      duration: 3,
+      initialInvestment: "1000",
+      annualInvestment: "500",
+      expectedReturn: "0",
+      duration: "3",
     };
 
     const expectedOutput: InvestmentYearData[] = [
